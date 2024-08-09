@@ -1,0 +1,88 @@
+Résumé cours intro Déploiement
+------------------------------
+
+Les briques que l'on rencontre dans un projet d'analyse de données
+
+À prendre dans n'importe quel ordre (en fonction du projet ds lequel on travaille)
+
+- python programming                 ----> mettre en place des programmes
+- web scraping                       ----> récupération de données
+- sql, pandas                        ----> analyse de données / extraction de connaissance
+- datawarehouse, apache nifi         ----> construire des pipelines de données (ETL, ELT, ...)
+- matplotlib, seaborn                ----> visualisation de données
+
+
+La brique qui nous manque ci dessus, c'est celle qui consiste à "déployer" le projet
+
+- De façon générale, pour "livrer" le projet au client, il faut faire un déploiement
+- Pour y arriver, nous avons appris à utiliser une bibliothèque dont le nom est Streamlit
+- On a vu comment
+  - installer Streamlit
+  - test l'installation
+  - mettre en place un petit projet
+  - quelques concepts:
+    - formulaires, champs, boutons
+    - constuire des pages
+    - s'interconnecter à une base de données (SQLite, MySQL)
+      - veiller à installer le bon connector
+      - veiller à écrire la bonne configuration (fichier secrets.toml)
+    - enregistrer les dépendances d'un projet (fichier requirements.txt)
+    - sauvegarder le projet dans un dépôt Github
+    - Créer un compte sur la plateforme de Streamlit et lier un dépôt Git pour faire le déploiement
+
+
+- Quelle est la facilité offerte par la plateforme de Streamlit ???
+- Si je n'utilise pas les serveurs de Streamlit, alors il faudra:
+    - acheter son propre serveur (S) (machine de type Linux)
+      - digitalocean (n'hésitez pas à chercher un peu)
+    - configurer ce serveur
+      - configurer la sécurité du serveur (firewall, antirootkits, accès SSH, etc...)
+      - configurer utilisateurs, droits, permissions
+      - installer tout package nécessaire au fonctionnement de notre application
+      - installer et configurer un serveur web
+        - un serveur web, est un logiciel que l'on installe sur notre machine
+        - exemple: Apache, Nginx, etc ...
+        - son rôle:
+        (monde extérieur)  <----> (serveur web) <---> (votre serveur)
+      - acheter un nom de domaine
+      - configurer le serveur DNS (gandi.net, hésitez pas à chercher)
+        - faire la correspondance entre le nom de domaine <---> adresse IP du serveur (S)
+
+
+Dernière démo: Comment déployer un modèle qui fait de la prédiction (ML) ?
+Arborescence de votre projet (à titre indicatif)
+
+├── application.py                        # un fichier qui contient l'application
+├── cat_dog_model.h5                      # un fichier qui contient le modèle de prédiction (h5)
+├── model.pkl                             # un fichier qui contient le modèle de prédiction (pkl)
+├── pages                                 # dossier nommé "pages"
+│   ├── about.py                          # un fichier Python pour afficher une certaine page Streamlit
+│   ├── cats_and_dogs_classification.py   # 1 autre fichier pour afficher une autre page
+│   ├── credit_prediction.py
+│   └── demonstration.py
+├── README.md                             # un fichier README (documentation du projet)
+├── requirements.txt                      # dépendances Python du projet
+├── session05.txt
+├── uploads
+└── utils.py                              # fichier qui va contenir des fonctions qui sont utiles
+
+
+- Streamlit, au démarrage du projet, s'il y a un dossier "pages" dans le repertoire
+  -alors, tout programme Python à l'intérieur devient une page du site web
+
+- Si ce n'est pas déjà fait, installer les dépendances du projet: pip install -r requirements.txt
+- lancer le projet: streamlit run application.py
+- on a accès à deux formulaires:
+  - le premirer nous permet de saisir une image
+  - le système va essayer de faire une prédication sur cette image (problème de classification)
+
+  - le deuxième formulaire nous permet de saisir des informations
+  - le système va essayer de nous dire si oui ou non "la banque peut nous accorder un crédit"
+  - (problème de regression)
+
+- sur la plateforme (dans la marge)
+  - il y aura autant de pages que de fichier python dans le dossier "pages"
+
+- de façon générale, vous voulez permettre à l'utilisateur de saisir des informations
+- ensuite, vous allez faire un traitement avec ces informations
+- pour y arriver, tout commence en général par un formulaire
