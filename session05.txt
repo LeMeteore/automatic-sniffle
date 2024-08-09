@@ -86,3 +86,23 @@ Arborescence de votre projet (à titre indicatif)
 - de façon générale, vous voulez permettre à l'utilisateur de saisir des informations
 - ensuite, vous allez faire un traitement avec ces informations
 - pour y arriver, tout commence en général par un formulaire
+- veiller à mettre ddans le formulaire, les champs dont vous avez besoin
+- récupérer ces champs là
+- faire un traitement (appeler une fonction) sur les données saisies dans le formulaire
+
+- bien sûr
+  - mettre le tout dans un dépôt de code
+  - copier l'url du fichier principal dans le dépôt:
+    - https://github.com/LeMeteore/automatic-sniffle/blob/trunk/applications.py
+  - aller sur le cloud de Streamlit
+  - creer une application
+  - coller l'url qui pointe vers Github (le fichier)
+  - choisir un nom pour l'url de votre Application Streamlit
+  - cliquer sur "Deploy"
+  - prier
+
+
+- une fois l'application prête
+  - récupérer le lien: https://dama04-pred.streamlit.app/
+  - partager avec le client/collaborateur
+  - célébrez
